@@ -24,6 +24,16 @@ namespace UnitTest_ListTasks
         }
 
         [Test]
+        [ExpectedException(typeof(Exception))]
+        public void TestAdd_Return_Exception()
+        {
+            ListTasks listTasks = new ListTasks();
+            ToDoTask task=null;
+
+            listTasks.Add(task);
+        }
+
+        [Test]
 
         public void TestEdit()
         {
@@ -40,6 +50,17 @@ namespace UnitTest_ListTasks
         }
 
         [Test]
+        [ExpectedException(typeof(Exception))]
+
+        public void TestEdit_Return_Exception()
+        {
+            ListTasks listTasks = new ListTasks();
+            ToDoTask task = null;
+
+            listTasks.Edit(task);
+        }
+
+        [Test]
 
         public void TestRemove()
         {
@@ -53,6 +74,17 @@ namespace UnitTest_ListTasks
             listTasks.Remove(task);
 
             Assert.AreEqual(2, listTasks.GetAllTasks().Count);
+        }
+
+        [Test]
+        [ExpectedException(typeof(Exception))]
+
+        public void TestRemove_Return_Exception()
+        {
+            ListTasks listTasks = new ListTasks();
+            ToDoTask task = null;
+
+            listTasks.Remove(task);
         }
 
         [Test]
