@@ -24,6 +24,8 @@ namespace ToDoTask
             comboBox1.Items.Add(State.Open);
             comboBox1.Items.Add(State.InProgress);
             comboBox1.Items.Add(State.Close);
+            comboBox1.SelectedIndex = 0;
+
         }
         public Form_Add_Edit(TodoTask task, TypeF typeF)
         {
@@ -32,6 +34,8 @@ namespace ToDoTask
             comboBox1.Items.Add(State.Open);
             comboBox1.Items.Add(State.InProgress);
             comboBox1.Items.Add(State.Close);
+
+            comboBox1.SelectedIndex = 0;
 
             this.todoTask = task;
             this.type = typeF;
@@ -49,7 +53,7 @@ namespace ToDoTask
 
         private void btn_OK_Click(object sender, EventArgs e)
         {
-            //if (String.IsNullOrEmpty(textBox_Title.Text) || String.IsNullOrEmpty(textBox_Description.Text) ||comboBox1.SelectedIndex==-1) return;
+            if (String.IsNullOrEmpty(textBox_Title.Text)){ MessageBox.Show("Enter title!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
 
             if (type == TypeF.Add)
             {
@@ -57,6 +61,9 @@ namespace ToDoTask
                 if (comboBox1.SelectedItem.ToString() == "Open") state = State.Open;
                 if (comboBox1.SelectedItem.ToString() == "Close") state = State.Close;
                 if (comboBox1.SelectedItem.ToString() == "InProgress") state = State.InProgress;
+                if (dateTimePicker_Start.Value.Date < DateTime.Now.Date) { MessageBox.Show("Not a correct date!\n-> Start Date", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
+                if (dateTimePicker_End.Value.Date < dateTimePicker_Start.Value.Date) { MessageBox.Show("Not a correct date!\n End Date", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
+
 
 
                 todoTask.Title = textBox_Title.Text;
@@ -64,6 +71,7 @@ namespace ToDoTask
                 todoTask.StartDT = dateTimePicker_Start.Value.Date;
                 todoTask.EndDT = dateTimePicker_End.Value.Date;
                 todoTask.state = state;
+
 
                 this.DialogResult = DialogResult.OK;
             }

@@ -34,7 +34,6 @@ namespace ToDoTask
                     btn_ShowAll_Click(sender, e);
                 }
                 catch (Exception ex) { MessageBox.Show(ex.Message,"Error");}
-              
             }
         }
 
