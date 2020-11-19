@@ -16,15 +16,17 @@ namespace TaskLib
     {
         public int Id { get; set; }
         public string Title { get; set; }
+        public string Description { get; set; }
         public DateTime StartDT { get; set; }
         public DateTime EndDT { get; set; }
         public State state { get; set; }
 
         public ToDoTask() { }
 
-        public ToDoTask(string title,DateTime startDT, DateTime endDT,State state)
+        public ToDoTask(string title, string description, DateTime startDT, DateTime endDT, State state)
         {
             this.Title = title;
+            this.Description = description;
             this.StartDT = startDT;
             this.EndDT = endDT;
             this.state = state;
@@ -106,6 +108,11 @@ namespace TaskLib
             if (task == null) throw new Exception("item was null");
 
             Tasks.Remove(task);
+
+            using (FileStream fs = new FileStream("Tasks.xml", FileMode.Truncate))
+            {
+                xs.Serialize(fs, Tasks);
+            }
         }
 
         ///@param id task ID
