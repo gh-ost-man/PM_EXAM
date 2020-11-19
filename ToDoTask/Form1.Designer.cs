@@ -44,39 +44,43 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(611, 221);
+            this.dataGridView1.Size = new System.Drawing.Size(611, 196);
             this.dataGridView1.TabIndex = 11;
+            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
             // btn_ShowAll
             // 
-            this.btn_ShowAll.Location = new System.Drawing.Point(650, 99);
+            this.btn_ShowAll.Location = new System.Drawing.Point(547, 300);
             this.btn_ShowAll.Name = "btn_ShowAll";
             this.btn_ShowAll.Size = new System.Drawing.Size(75, 23);
             this.btn_ShowAll.TabIndex = 10;
             this.btn_ShowAll.Text = "Show all";
             this.btn_ShowAll.UseVisualStyleBackColor = true;
+            this.btn_ShowAll.Click += new System.EventHandler(this.btn_ShowAll_Click);
             // 
             // btn_Remove
             // 
-            this.btn_Remove.Location = new System.Drawing.Point(650, 70);
+            this.btn_Remove.Location = new System.Drawing.Point(12, 301);
             this.btn_Remove.Name = "btn_Remove";
             this.btn_Remove.Size = new System.Drawing.Size(75, 23);
             this.btn_Remove.TabIndex = 9;
             this.btn_Remove.Text = "Remove";
             this.btn_Remove.UseVisualStyleBackColor = true;
+            this.btn_Remove.Click += new System.EventHandler(this.btn_Remove_Click);
             // 
             // btn_Edit
             // 
-            this.btn_Edit.Location = new System.Drawing.Point(650, 41);
+            this.btn_Edit.Location = new System.Drawing.Point(466, 301);
             this.btn_Edit.Name = "btn_Edit";
             this.btn_Edit.Size = new System.Drawing.Size(75, 23);
             this.btn_Edit.TabIndex = 8;
             this.btn_Edit.Text = "Edit";
             this.btn_Edit.UseVisualStyleBackColor = true;
+            this.btn_Edit.Click += new System.EventHandler(this.btn_Edit_Click);
             // 
             // btn_AddNew
             // 
-            this.btn_AddNew.Location = new System.Drawing.Point(650, 12);
+            this.btn_AddNew.Location = new System.Drawing.Point(385, 300);
             this.btn_AddNew.Name = "btn_AddNew";
             this.btn_AddNew.Size = new System.Drawing.Size(75, 23);
             this.btn_AddNew.TabIndex = 7;
@@ -86,9 +90,11 @@
             // 
             // textBox_Description
             // 
-            this.textBox_Description.Location = new System.Drawing.Point(13, 240);
+            this.textBox_Description.Location = new System.Drawing.Point(12, 214);
             this.textBox_Description.Multiline = true;
             this.textBox_Description.Name = "textBox_Description";
+            this.textBox_Description.ReadOnly = true;
+            this.textBox_Description.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.textBox_Description.Size = new System.Drawing.Size(610, 80);
             this.textBox_Description.TabIndex = 12;
             // 
@@ -96,7 +102,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 336);
+            this.ClientSize = new System.Drawing.Size(636, 336);
             this.Controls.Add(this.textBox_Description);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btn_ShowAll);
@@ -104,7 +110,9 @@
             this.Controls.Add(this.btn_Edit);
             this.Controls.Add(this.btn_AddNew);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

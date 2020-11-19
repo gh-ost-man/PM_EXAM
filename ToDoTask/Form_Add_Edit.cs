@@ -61,8 +61,8 @@ namespace ToDoTask
 
                 todoTask.Title = textBox_Title.Text;
                 todoTask.Description = textBox_Description.Text;
-                todoTask.StartDT = dateTimePicker_Start.Value;
-                todoTask.EndDT = dateTimePicker_End.Value;
+                todoTask.StartDT = dateTimePicker_Start.Value.Date;
+                todoTask.EndDT = dateTimePicker_End.Value.Date;
                 todoTask.state = state;
 
                 this.DialogResult = DialogResult.OK;
@@ -78,8 +78,8 @@ namespace ToDoTask
                 todoTask.Id = id;
                 todoTask.Title = textBox_Title.Text;
                 todoTask.Description = textBox_Description.Text;
-                todoTask.StartDT = dateTimePicker_Start.Value;
-                todoTask.EndDT = dateTimePicker_End.Value;
+                todoTask.StartDT = dateTimePicker_Start.Value.Date;
+                todoTask.EndDT = dateTimePicker_End.Value.Date;
                 todoTask.state = state;
 
                 this.DialogResult = DialogResult.OK;
@@ -92,8 +92,8 @@ namespace ToDoTask
             {
                 textBox_Title.Text = dataGridView1.CurrentRow.Cells["Title"].Value.ToString();
                 textBox_Description.Text = dataGridView1.CurrentRow.Cells["Description"].Value.ToString();
-                dateTimePicker_Start.Value = Convert.ToDateTime(dataGridView1.CurrentRow.Cells["startDate"].Value);
-                dateTimePicker_End.Value = Convert.ToDateTime(dataGridView1.CurrentRow.Cells["endDate"].Value);
+                dateTimePicker_Start.Value = Convert.ToDateTime(dataGridView1.CurrentRow.Cells["StartDT"].Value).Date;
+                dateTimePicker_End.Value = Convert.ToDateTime(dataGridView1.CurrentRow.Cells["EndDT"].Value).Date;
 
                 string state = dataGridView1.CurrentRow.Cells["State"].Value.ToString();
 
