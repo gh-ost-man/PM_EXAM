@@ -28,9 +28,13 @@ namespace ToDoTask
             Form_Add_Edit add = new Form_Add_Edit(task, TypeF.Add);
             if (add.ShowDialog() == DialogResult.OK)
             {
-                tasks.Add(task);
-                dataGridView1.DataSource = null;
-                dataGridView1.DataSource = tasks.GetAllTasks();
+                try
+                {
+                    tasks.Add(task);
+                    btn_ShowAll_Click(sender, e);
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message,"Error");}
+              
             }
         }
 
@@ -41,9 +45,12 @@ namespace ToDoTask
             Form_Add_Edit edit = new Form_Add_Edit(task, TypeF.Edit);
             if (edit.ShowDialog() == DialogResult.OK)
             {
-                tasks.Edit(task);
-                dataGridView1.DataSource = null;
-                dataGridView1.DataSource = tasks.GetAllTasks();
+                try
+                {
+                    tasks.Edit(task);
+                    btn_ShowAll_Click(sender, e);
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message,"Error");}
             }
         }
 
@@ -65,12 +72,15 @@ namespace ToDoTask
         private void btn_Remove_Click(object sender, EventArgs e)
         {
             if (id == -1) return;
+            try
+            {
+                TodoTask task = tasks.FindById(id);
+                tasks.Remove(task);
 
-            TodoTask task = tasks.FindById(id);
-            tasks.Remove(task);
-
-            textBox_Description.Text = string.Empty;
-            btn_ShowAll_Click(sender, e);
+                textBox_Description.Text = string.Empty;
+                btn_ShowAll_Click(sender, e);
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message,"Error");}
         }
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)

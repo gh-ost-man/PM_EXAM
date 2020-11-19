@@ -82,8 +82,6 @@ namespace TaskLib
                     xs.Serialize(fs, Tasks);
                 }
             }
-
-
         }
         ///@param task changeв task.
         public void Edit(TodoTask task)
