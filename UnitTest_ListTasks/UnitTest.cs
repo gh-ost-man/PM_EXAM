@@ -28,7 +28,7 @@ namespace UnitTest_ListTasks
         public void TestAdd_Return_Exception()
         {
             ListTasks listTasks = new ListTasks();
-            ToDoTask task=null;
+            ToDoTask task = null;
 
             listTasks.Add(task);
         }
