@@ -82,6 +82,7 @@
             this.btn_AddNew.TabIndex = 7;
             this.btn_AddNew.Text = "Add new";
             this.btn_AddNew.UseVisualStyleBackColor = true;
+            this.btn_AddNew.Click += new System.EventHandler(this.btn_AddNew_Click);
             // 
             // textBox_Description
             // 
