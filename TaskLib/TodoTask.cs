@@ -12,7 +12,7 @@ namespace TaskLib
    @class ToDoMask
    Contains the basic properties of the task.
    */
-    public class ToDoTask
+    public class TodoTask
     {
         public int Id { get; set; }
         public string Title { get; set; }
@@ -21,9 +21,9 @@ namespace TaskLib
         public DateTime EndDT { get; set; }
         public State state { get; set; }
 
-        public ToDoTask() { }
+        public TodoTask() { }
 
-        public ToDoTask(string title, string description, DateTime startDT, DateTime endDT, State state)
+        public TodoTask(string title, string description, DateTime startDT, DateTime endDT, State state)
         {
             this.Title = title;
             this.Description = description;
@@ -49,14 +49,14 @@ namespace TaskLib
      */
     public class ListTasks
     {
-        public List<ToDoTask> Tasks = new List<ToDoTask>();
+        public List<TodoTask> Tasks = new List<TodoTask>();
 
-        XmlSerializer xs = new XmlSerializer(typeof(List<ToDoTask>));
+        XmlSerializer xs = new XmlSerializer(typeof(List<TodoTask>));
 
         static int id = -1;
 
         ///@param task new task.
-        public void Add(ToDoTask task)
+        public void Add(TodoTask task)
         {
             if (task == null) throw new Exception("item was null");
 
@@ -86,7 +86,7 @@ namespace TaskLib
 
         }
         ///@param task changeв task.
-        public void Edit(ToDoTask task)
+        public void Edit(TodoTask task)
         {
             if (task == null) throw new Exception("item was null");
             int index = -1;
@@ -103,7 +103,7 @@ namespace TaskLib
         }
 
         ///@param task for remove
-        public void Remove(ToDoTask task)
+        public void Remove(TodoTask task)
         {
             if (task == null) throw new Exception("item was null");
 
@@ -117,19 +117,19 @@ namespace TaskLib
 
         ///@param id task ID
         ///@return task by id
-        public ToDoTask FindById(int _id)
+        public TodoTask FindById(int _id)
         {
             return Tasks.Where(x => x.Id == _id).FirstOrDefault();
         }
 
         ///@return the entire to-do list.
-        public List<ToDoTask> GetAllTasks()
+        public List<TodoTask> GetAllTasks()
         {
             if (File.Exists("Tasks.xml"))
             {
                 using (FileStream fs = new FileStream("Tasks.xml", FileMode.OpenOrCreate))
                 {
-                    Tasks = (List<ToDoTask>)xs.Deserialize(fs);
+                    Tasks = (List<TodoTask>)xs.Deserialize(fs);
                 }
             }
 
