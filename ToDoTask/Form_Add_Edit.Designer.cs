@@ -70,6 +70,8 @@
             this.btn_Cancel.Text = "Cancel";
             this.btn_Cancel.UseVisualStyleBackColor = true;
             this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
+            this.btn_Cancel.MouseEnter += new System.EventHandler(this.btn_OK_MouseEnter);
+            this.btn_Cancel.MouseLeave += new System.EventHandler(this.btn_OK_MouseLeave);
             // 
             // btn_OK
             // 
@@ -82,6 +84,8 @@
             this.btn_OK.Text = "OK";
             this.btn_OK.UseVisualStyleBackColor = true;
             this.btn_OK.Click += new System.EventHandler(this.btn_OK_Click);
+            this.btn_OK.MouseEnter += new System.EventHandler(this.btn_OK_MouseEnter);
+            this.btn_OK.MouseLeave += new System.EventHandler(this.btn_OK_MouseLeave);
             // 
             // comboBox1
             // 
@@ -96,6 +100,7 @@
             this.textBox_Description.Location = new System.Drawing.Point(528, 83);
             this.textBox_Description.Multiline = true;
             this.textBox_Description.Name = "textBox_Description";
+            this.textBox_Description.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.textBox_Description.Size = new System.Drawing.Size(196, 55);
             this.textBox_Description.TabIndex = 22;
             // 
@@ -163,6 +168,8 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(12, 45);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(429, 275);
             this.dataGridView1.TabIndex = 15;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
@@ -178,6 +185,8 @@
             this.btn_Close.Text = "X";
             this.btn_Close.UseVisualStyleBackColor = true;
             this.btn_Close.Click += new System.EventHandler(this.btn_Close_Click);
+            this.btn_Close.MouseEnter += new System.EventHandler(this.btn_OK_MouseEnter);
+            this.btn_Close.MouseLeave += new System.EventHandler(this.btn_OK_MouseLeave);
             // 
             // Form_Add_Edit
             // 

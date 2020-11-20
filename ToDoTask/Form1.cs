@@ -42,6 +42,8 @@ namespace ToDoTask
         private void Form1_Load(object sender, EventArgs e)
         {
             tasks.GetAllTasks();
+
+            btn_ShowAll_Click(sender, e);
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -64,6 +66,22 @@ namespace ToDoTask
         {
             TodoTask task = null;
             openChildForm(new Form_Add_Edit(task, TypeF.Edit));
+        }
+
+        private void btn_AddNew_MouseEnter(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+
+            button.BackColor = Color.DarkCyan;
+            button.ForeColor = Color.Black;
+        }
+
+        private void btn_AddNew_MouseLeave(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+
+            button.BackColor = Color.Transparent;
+            button.ForeColor = Color.DarkCyan;
         }
     }
 }

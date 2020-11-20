@@ -61,6 +61,8 @@
             this.btn_ShowAll.Text = "Show all";
             this.btn_ShowAll.UseVisualStyleBackColor = false;
             this.btn_ShowAll.Click += new System.EventHandler(this.btn_ShowAll_Click);
+            this.btn_ShowAll.MouseEnter += new System.EventHandler(this.btn_AddNew_MouseEnter);
+            this.btn_ShowAll.MouseLeave += new System.EventHandler(this.btn_AddNew_MouseLeave);
             // 
             // btn_Edit
             // 
@@ -75,6 +77,8 @@
             this.btn_Edit.Text = "Edit";
             this.btn_Edit.UseVisualStyleBackColor = false;
             this.btn_Edit.Click += new System.EventHandler(this.btn_Edit_Click);
+            this.btn_Edit.MouseEnter += new System.EventHandler(this.btn_AddNew_MouseEnter);
+            this.btn_Edit.MouseLeave += new System.EventHandler(this.btn_AddNew_MouseLeave);
             // 
             // btn_AddNew
             // 
@@ -89,6 +93,8 @@
             this.btn_AddNew.Text = "Add new";
             this.btn_AddNew.UseVisualStyleBackColor = false;
             this.btn_AddNew.Click += new System.EventHandler(this.btn_AddNew_Click);
+            this.btn_AddNew.MouseEnter += new System.EventHandler(this.btn_AddNew_MouseEnter);
+            this.btn_AddNew.MouseLeave += new System.EventHandler(this.btn_AddNew_MouseLeave);
             // 
             // panelChieldForm
             // 

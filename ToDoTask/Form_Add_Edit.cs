@@ -16,6 +16,7 @@ namespace ToDoTask
         ListTasks listTasks = new ListTasks();
 
         TodoTask todoTask = null;
+       
         TypeF type;
 
         int id = -1;
@@ -49,7 +50,7 @@ namespace ToDoTask
         }
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
 
         private void btn_OK_Click(object sender, EventArgs e)
@@ -68,7 +69,7 @@ namespace ToDoTask
 
                 todoTask = new TodoTask();
                 todoTask.Title = textBox_Title.Text;
-                todoTask.Description = $@"{textBox_Description.Text}";
+                todoTask.Description = textBox_Description.Text;
                 todoTask.StartDT = dateTimePicker_Start.Value.Date;
                 todoTask.EndDT = dateTimePicker_End.Value.Date;
                 todoTask.state = state;
@@ -131,7 +132,24 @@ namespace ToDoTask
 
         private void btn_Close_Click(object sender, EventArgs e)
         {
+            this.Close();
             this.DialogResult = DialogResult.Cancel;
+        }
+
+        private void btn_OK_MouseEnter(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+
+            button.BackColor = Color.DarkCyan;
+            button.ForeColor = Color.Black;
+        }
+
+        private void btn_OK_MouseLeave(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+
+            button.BackColor = Color.Transparent;
+            button.ForeColor = Color.DarkCyan;
         }
     }
 }

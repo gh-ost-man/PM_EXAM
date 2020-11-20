@@ -58,7 +58,7 @@ namespace TaskLib
         ///@param task new task.
         public void Add(TodoTask task)
         {
-            if (task == null) throw new Exception("item was null");
+            if (task == null) throw new Exception("item was null"); ///If task == null throw Exception(task was null)
 
             if (Tasks.Count == 0) id = 1;
             else id = Tasks[Tasks.Count - 1].Id + 1;
@@ -83,10 +83,10 @@ namespace TaskLib
                 }
             }
         }
-        ///@param task changeв task.
+        ///@param task changed task.
         public void Edit(TodoTask task)
         {
-            if (task == null) throw new Exception("item was null");
+            if (task == null) throw new Exception("item was null"); ///If task == null throw Exception(task was null)
             int index = -1;
 
             for (int i = 0; i < Tasks.Count; i++)
@@ -94,6 +94,7 @@ namespace TaskLib
 
             Tasks[index] = task;
 
+            //Writes changes to the file
             using (FileStream fs = new FileStream("Tasks.xml", FileMode.Truncate))
             {
                 xs.Serialize(fs, Tasks);
@@ -103,7 +104,7 @@ namespace TaskLib
         ///@param task for remove
         public void Remove(TodoTask task)
         {
-            if (task == null) throw new Exception("item was null");
+            if (task == null) throw new Exception("item was null");///If task == null throw Exception(task was null)
 
             Tasks.Remove(task);
 
