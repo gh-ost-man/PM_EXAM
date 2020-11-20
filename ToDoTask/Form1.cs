@@ -21,46 +21,22 @@ namespace ToDoTask
             InitializeComponent();
         }
 
-        private void btn_AddNew_Click(object sender, EventArgs e)
+
+        private Form activeForm = null;
+        private void openChildForm(Form childForm)
         {
-            TodoTask task = new TodoTask();
+            if (activeForm != null)
+                activeForm.Close();
 
-            Form_Add_Edit add = new Form_Add_Edit(task, TypeF.Add);
-            if (add.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    tasks.Add(task);
-                    btn_ShowAll_Click(sender, e);
-                }
-                catch (Exception ex) { MessageBox.Show(ex.Message,"Error");}
-            }
-        }
+            activeForm = childForm;
 
-        private void btn_Edit_Click(object sender, EventArgs e)
-        {
-            TodoTask task = new TodoTask();
-
-            Form_Add_Edit edit = new Form_Add_Edit(task, TypeF.Edit);
-            if (edit.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    tasks.Edit(task);
-                    btn_ShowAll_Click(sender, e);
-                }
-                catch (Exception ex) { MessageBox.Show(ex.Message,"Error");}
-            }
-        }
-
-        private void btn_ShowAll_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                dataGridView1.DataSource = null;
-                dataGridView1.DataSource = tasks.GetAllTasks();
-            }
-            catch { }
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            panelChieldForm.Controls.Add(childForm);
+            panelChieldForm.Tag = childForm;
+            panelChieldForm.BringToFront();
+            childForm.Show();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -68,30 +44,26 @@ namespace ToDoTask
             tasks.GetAllTasks();
         }
 
-        private void btn_Remove_Click(object sender, EventArgs e)
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (id == -1) return;
-            try
-            {
-                TodoTask task = tasks.FindById(id);
-                tasks.Remove(task);
-
-                textBox_Description.Text = string.Empty;
-                btn_ShowAll_Click(sender, e);
-            }
-            catch (Exception ex) { MessageBox.Show(ex.Message,"Error");}
+            Application.Exit();
         }
 
-        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        private void btn_ShowAll_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.Rows.Count == 0) return;
+            openChildForm(new Form_ShowTasks());
+        }
 
-            try
-            {
-                id = (int)dataGridView1.CurrentRow.Cells["Id"].Value;
-                textBox_Description.Text= dataGridView1.CurrentRow.Cells["Description"].Value.ToString();
-            }
-            catch { }
+        private void btn_AddNew_Click(object sender, EventArgs e)
+        {
+            TodoTask task = null;
+            openChildForm(new Form_Add_Edit(task, TypeF.Add));
+        }
+
+        private void btn_Edit_Click(object sender, EventArgs e)
+        {
+            TodoTask task = null;
+            openChildForm(new Form_Add_Edit(task, TypeF.Edit));
         }
     }
 }
