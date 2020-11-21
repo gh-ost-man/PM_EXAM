@@ -59,5 +59,15 @@ namespace ToDoTask.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap QsIDi3e {
+            get {
+                object obj = ResourceManager.GetObject("QsIDi3e", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
