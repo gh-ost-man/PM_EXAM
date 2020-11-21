@@ -98,11 +98,9 @@
             // 
             // panelChieldForm
             // 
-            this.panelChieldForm.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelChieldForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(14)))), ((int)(((byte)(21)))));
             this.panelChieldForm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panelChieldForm.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelChieldForm.Location = new System.Drawing.Point(0, 0);
             this.panelChieldForm.Name = "panelChieldForm";
             this.panelChieldForm.Size = new System.Drawing.Size(752, 395);

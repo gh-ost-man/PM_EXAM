@@ -50,6 +50,7 @@ namespace ToDoTask
                 tasks.Remove(task);
 
                 textBox_Description.Text = string.Empty;
+                textBox_Description.Text = string.Empty;
 
                 dataGridView1.DataSource = null;
                 dataGridView1.DataSource = tasks.GetAllTasks();
