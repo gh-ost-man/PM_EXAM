@@ -31,11 +31,9 @@ namespace ToDoTask
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            if (dataGridView1.Rows.Count == 0) return;
 
             try
             {
-                id = (int)dataGridView1.CurrentRow.Cells["Id"].Value;
                 textBox_Description.Text = dataGridView1.CurrentRow.Cells["Description"].Value.ToString();
             }
             catch { }
@@ -43,9 +41,11 @@ namespace ToDoTask
 
         private void btn_Remove_Click(object sender, EventArgs e)
         {
-            if (id == -1) return;
+            if (dataGridView1.Rows.Count == 0) return;
             try
             {
+                id = (int)dataGridView1.CurrentRow.Cells["Id"].Value;
+
                 TodoTask task = tasks.FindById(id);
                 tasks.Remove(task);
 
@@ -56,6 +56,22 @@ namespace ToDoTask
                 id = -1;
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Error",MessageBoxButtons.OK,MessageBoxIcon.Warning); }
+        }
+
+        private void btn_Remove_MouseEnter(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+
+            button.BackColor = Color.DarkCyan;
+            button.ForeColor = Color.Black;
+        }
+
+        private void btn_Remove_MouseLeave(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+
+            button.BackColor = Color.Transparent;
+            button.ForeColor = Color.DarkCyan;
         }
     }
 }

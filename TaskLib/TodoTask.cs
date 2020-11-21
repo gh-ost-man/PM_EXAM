@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using System.Xml.Serialization;
 
 namespace TaskLib
@@ -51,13 +52,15 @@ namespace TaskLib
     {
         public List<TodoTask> Tasks = new List<TodoTask>();
 
-        XmlSerializer xs = new XmlSerializer(typeof(List<TodoTask>));
+        XmlSerializer xs = new XmlSerializer(typeof(List<TodoTask>),new XmlRootAttribute("Tasks"));
+        XDocument doc;
 
         static int id = -1;
 
         ///@param task new task.
         public void Add(TodoTask task)
         {
+            ///The method adds a new task
             if (task == null) throw new Exception("item was null"); ///If task == null throw Exception(task was null)
 
             if (Tasks.Count == 0) id = 1;
@@ -86,6 +89,7 @@ namespace TaskLib
         ///@param task changed task.
         public void Edit(TodoTask task)
         {
+            ///The method edits task
             if (task == null) throw new Exception("item was null"); ///If task == null throw Exception(task was null)
             int index = -1;
 
@@ -104,26 +108,27 @@ namespace TaskLib
         ///@param task for remove
         public void Remove(TodoTask task)
         {
+            ///The method removes task
             if (task == null) throw new Exception("item was null");///If task == null throw Exception(task was null)
 
-            Tasks.Remove(task);
+            doc = XDocument.Load("Tasks.xml");
+            doc.Element("Tasks").Elements("TodoTask").Where(x => x.Element("Id").Value == task.Id.ToString()).Remove();
 
-            using (FileStream fs = new FileStream("Tasks.xml", FileMode.Truncate))
-            {
-                xs.Serialize(fs, Tasks);
-            }
+            doc.Save("Tasks.xml");
         }
 
         ///@param id task ID
         ///@return task by id
         public TodoTask FindById(int _id)
         {
+            ///The method find task by id
             return Tasks.Where(x => x.Id == _id).FirstOrDefault();
         }
 
         ///@return the entire to-do list.
         public List<TodoTask> GetAllTasks()
         {
+            ///The method returns entire to-do list
             if (File.Exists("Tasks.xml"))
             {
                 using (FileStream fs = new FileStream("Tasks.xml", FileMode.OpenOrCreate))

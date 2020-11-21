@@ -102,9 +102,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelChieldForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(14)))), ((int)(((byte)(21)))));
+            this.panelChieldForm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.panelChieldForm.Location = new System.Drawing.Point(0, 0);
             this.panelChieldForm.Name = "panelChieldForm";
-            this.panelChieldForm.Size = new System.Drawing.Size(752, 385);
+            this.panelChieldForm.Size = new System.Drawing.Size(752, 395);
             this.panelChieldForm.TabIndex = 1;
             // 
             // Form1

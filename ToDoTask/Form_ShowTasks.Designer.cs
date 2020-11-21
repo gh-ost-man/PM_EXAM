@@ -80,6 +80,8 @@
             this.btn_Remove.Text = "Remove";
             this.btn_Remove.UseVisualStyleBackColor = true;
             this.btn_Remove.Click += new System.EventHandler(this.btn_Remove_Click);
+            this.btn_Remove.MouseEnter += new System.EventHandler(this.btn_Remove_MouseEnter);
+            this.btn_Remove.MouseLeave += new System.EventHandler(this.btn_Remove_MouseLeave);
             // 
             // Form_ShowTasks
             // 

@@ -16,7 +16,7 @@ namespace UnitTest_ListTasks
         {
             ListTasks listTasks = new ListTasks();
 
-            ToDoTask task = new ToDoTask("Task1", "Create program", new DateTime(2020, 11, 19), new DateTime(2020, 11, 20), State.Open);
+            TodoTask task = new TodoTask("Task1", "Create program", new DateTime(2020, 11, 19), new DateTime(2020, 11, 20), State.Open);
 
             listTasks.Add(task);
 
@@ -28,9 +28,9 @@ namespace UnitTest_ListTasks
         public void TestEdit()
         {
             ListTasks listTasks = new ListTasks();
-            listTasks.Add(new ToDoTask("F", "dasdas", DateTime.Now, new DateTime(2020, 11, 22), State.Open));
+            listTasks.Add(new TodoTask("F", "dasdas", DateTime.Now, new DateTime(2020, 11, 22), State.Open));
 
-            ToDoTask task = listTasks.Tasks.Where(x => x.Id == 1).FirstOrDefault();
+            TodoTask task = listTasks.Tasks.Where(x => x.Id == 1).FirstOrDefault();
 
             task.Title = "Task 1";
 
@@ -44,11 +44,11 @@ namespace UnitTest_ListTasks
         public void TestRemove()
         {
             ListTasks listTasks = new ListTasks();
-            listTasks.Add(new ToDoTask("F1", "d1", DateTime.Now, new DateTime(2020, 11, 22), State.Open));
-            listTasks.Add(new ToDoTask("F2", "d2", DateTime.Now, new DateTime(2020, 11, 22), State.Open));
-            listTasks.Add(new ToDoTask("F3", "d3", DateTime.Now, new DateTime(2020, 11, 22), State.Open));
+            listTasks.Add(new TodoTask("F1", "d1", DateTime.Now, new DateTime(2020, 11, 22), State.Open));
+            listTasks.Add(new TodoTask("F2", "d2", DateTime.Now, new DateTime(2020, 11, 22), State.Open));
+            listTasks.Add(new TodoTask("F3", "d3", DateTime.Now, new DateTime(2020, 11, 22), State.Open));
 
-            ToDoTask task = listTasks.FindById(2);
+            TodoTask task = listTasks.FindById(2);
 
             listTasks.Remove(task);
 
@@ -60,11 +60,11 @@ namespace UnitTest_ListTasks
         public void TestFindById()
         {
             ListTasks listTasks = new ListTasks();
-            listTasks.Add(new ToDoTask("F1", "d1", DateTime.Now, new DateTime(2020, 11, 22), State.Open));
-            listTasks.Add(new ToDoTask("F2", "d2", DateTime.Now, new DateTime(2020, 11, 22), State.Open));
-            listTasks.Add(new ToDoTask("F3", "d3", DateTime.Now, new DateTime(2020, 11, 22), State.Open));
+            listTasks.Add(new TodoTask("F1", "d1", DateTime.Now, new DateTime(2020, 11, 22), State.Open));
+            listTasks.Add(new TodoTask("F2", "d2", DateTime.Now, new DateTime(2020, 11, 22), State.Open));
+            listTasks.Add(new TodoTask("F3", "d3", DateTime.Now, new DateTime(2020, 11, 22), State.Open));
 
-            ToDoTask task = listTasks.FindById(2);
+            TodoTask task = listTasks.FindById(2);
 
             Assert.AreEqual("F2", task.Title);
         }
@@ -74,9 +74,9 @@ namespace UnitTest_ListTasks
         public void TestGetAllTasks()
         {
             ListTasks listTasks = new ListTasks();
-            listTasks.Add(new ToDoTask("F1", "d1", DateTime.Now, new DateTime(2020, 11, 22), State.Open));
-            listTasks.Add(new ToDoTask("F2", "d2", DateTime.Now, new DateTime(2020, 11, 22), State.Open));
-            listTasks.Add(new ToDoTask("F3", "d3", DateTime.Now, new DateTime(2020, 11, 22), State.Open));
+            listTasks.Add(new TodoTask("F1", "d1", DateTime.Now, new DateTime(2020, 11, 22), State.Open));
+            listTasks.Add(new TodoTask("F2", "d2", DateTime.Now, new DateTime(2020, 11, 22), State.Open));
+            listTasks.Add(new TodoTask("F3", "d3", DateTime.Now, new DateTime(2020, 11, 22), State.Open));
 
             var res = listTasks.GetAllTasks();
 

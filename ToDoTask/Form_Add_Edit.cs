@@ -50,7 +50,9 @@ namespace ToDoTask
         }
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            textBox_Description.Text = string.Empty;
+            textBox_Title.Text = string.Empty;
+            comboBox1.SelectedIndex = 0;
         }
 
         private void btn_OK_Click(object sender, EventArgs e)
@@ -79,6 +81,7 @@ namespace ToDoTask
                 dataGridView1.DataSource = null;
                 dataGridView1.DataSource = listTasks.GetAllTasks();
 
+                btn_Cancel_Click(sender, e);
 
                 this.DialogResult = DialogResult.OK;
             }
@@ -106,6 +109,7 @@ namespace ToDoTask
 
                 this.DialogResult = DialogResult.OK;
             }
+
         }
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
