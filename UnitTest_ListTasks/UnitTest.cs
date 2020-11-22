@@ -8,10 +8,15 @@ using TaskLib;
 
 namespace UnitTest_ListTasks
 {
+
+    /// <summary>
+    /// The class contains methods that check the correct  TaskLib  methods.
+    /// </summary>
     public class UnitTest
     {
         [Test]
 
+        ///Сhecks the addition of a new item
         public void TestAdd()
         {
             ListTasks listTasks = new ListTasks();
@@ -25,6 +30,7 @@ namespace UnitTest_ListTasks
 
         [Test]
 
+        ///Сhecks the editable element
         public void TestEdit()
         {
             ListTasks listTasks = new ListTasks();
@@ -40,7 +46,7 @@ namespace UnitTest_ListTasks
         }
 
         [Test]
-
+        ///Сhecks the deletion of the item
         public void TestRemove()
         {
             ListTasks listTasks = new ListTasks();
@@ -57,6 +63,7 @@ namespace UnitTest_ListTasks
 
         [Test]
 
+        ///Searches item by ID
         public void TestFindById()
         {
             ListTasks listTasks = new ListTasks();
@@ -70,7 +77,6 @@ namespace UnitTest_ListTasks
         }
 
         [Test]
-
         public void TestGetAllTasks()
         {
             ListTasks listTasks = new ListTasks();

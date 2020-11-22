@@ -9,10 +9,10 @@ using System.Xml.Serialization;
 
 namespace TaskLib
 {
-    /**
-   @class ToDoMask
-   Contains the basic properties of the task.
-   */
+    /// <summary>
+    /// Contains the basic properties of the task.
+    /// </summary>
+
     public class TodoTask
     {
         public int Id { get; set; }
@@ -34,20 +34,19 @@ namespace TaskLib
         }
     }
 
-    /**
-    @enum State
-    Contains task states
-    */
+    /// <summary>
+    /// Contains task states
+    /// </summary>
     public enum State
     {
         Open = 1, InProgress = 2, Close = 3
     }
 
 
-    /**
-     @class ListTasks
-     Contains the list tasks.
-     */
+    /// <summary>
+    /// Contains the list tasks.
+    /// </summary>
+
     public class ListTasks
     {
         public List<TodoTask> Tasks = new List<TodoTask>();
@@ -57,10 +56,13 @@ namespace TaskLib
 
         static int id = -1;
 
-        ///@param task new task.
+        /// <summary>
+        ///  The method adds a new task.
+        /// </summary>
+        /// <param name="task">New task</param>
         public void Add(TodoTask task)
         {
-            ///The method adds a new task
+           
             if (task == null) throw new Exception("item was null"); ///If task == null throw Exception(task was null)
 
             if (Tasks.Count == 0) id = 1;
@@ -86,10 +88,12 @@ namespace TaskLib
                 }
             }
         }
-        ///@param task changed task.
+        /// <summary>
+        /// The method edits task
+        /// </summary>
+        /// <param name="task">Сhanged task.</param>
         public void Edit(TodoTask task)
         {
-            ///The method edits task
             if (task == null) throw new Exception("item was null"); ///If task == null throw Exception(task was null)
             int index = -1;
 
@@ -98,17 +102,19 @@ namespace TaskLib
 
             Tasks[index] = task;
 
-            //Writes changes to the file
             using (FileStream fs = new FileStream("Tasks.xml", FileMode.Truncate))
             {
                 xs.Serialize(fs, Tasks);
             }
         }
 
-        ///@param task for remove
+        /// <summary>
+        /// The method removes task
+        /// </summary>
+        /// <param name="task">For remove</param>
+
         public void Remove(TodoTask task)
         {
-            ///The method removes task
             if (task == null) throw new Exception("item was null");///If task == null throw Exception(task was null)
 
             doc = XDocument.Load("Tasks.xml");
@@ -117,18 +123,23 @@ namespace TaskLib
             doc.Save("Tasks.xml");
         }
 
-        ///@param id task ID
-        ///@return task by id
+        /// <summary>
+        ///The method find task by id.
+        /// </summary>
+        /// <param name="_id">Task ID</param>
+        /// <returns>Task by id</returns>
         public TodoTask FindById(int _id)
         {
-            ///The method find task by id
             return Tasks.Where(x => x.Id == _id).FirstOrDefault();
         }
 
-        ///@return the entire to-do list.
+        /// <summary>
+        /// The method returns entire to-do list
+        /// </summary>
+        /// <returns>The entire to-do list.</returns>
+
         public List<TodoTask> GetAllTasks()
         {
-            ///The method returns entire to-do list
             if (File.Exists("Tasks.xml"))
             {
                 using (FileStream fs = new FileStream("Tasks.xml", FileMode.OpenOrCreate))
